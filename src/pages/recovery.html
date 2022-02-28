@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.2.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar contraseña / Quizz app</title>
+  </head>
+  <body style="background-color: #6b18ac" class="h-full w-full">
+    <h1 class="text-black text-center pt-6 text-8xl text-white">Quizz App</h1>
+    <h4 class="text-black text-center pt-2 text-lg text-white">
+      Recupera tu contraseña
+    </h4>
+    <main class="grid grid-rows-2 mt-20 place-content-center">
+      <div class="form-control w-full place-content-center">
+        <label class="label">
+          <span class="label-text">Nueva contraseña</span>
+        </label>
+        <input
+          id="newPassword"
+          type="password"
+          class="input input-bordered text-black bg-white  "
+        />
+      </div>
+
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text">Confirma nueva contraseña</span>
+        </label>
+        <input
+          id="confirmNewPassword"
+          type="password"
+          class="input input-bordered text-black bg-white w-full max-w-xs"
+        />
+      </div>
+
+      <button class="btn w-72 mt-7" >Recuperar</button>
+    </main>
+    <script src="/src/pages/index.js"></script>
+  </body>
+</html>

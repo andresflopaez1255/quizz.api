@@ -1,0 +1,32 @@
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model UserPunctuation {
+  id          Int  @id @default(autoincrement())
+  id_user     Int
+  user        User @relation(fields: [id_user], references: [id])
+  punctuation Int
+}
+
+model User {
+  id              Int     @id @default(autoincrement())
+  email_user      String
+  name_user       String
+  password        String?
+  avatar_user     String
+  token_google    String?
+  access_token    String?  @db.VarChar(length: 400)
+  refresh_token   String?  @db.VarChar(length: 400) 
+  reset_token     String? @db.VarChar(length: 400) 
+  UserPunctuation UserPunctuation[]
+}
