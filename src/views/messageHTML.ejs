@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #6b18ac" >
+    <h1 class="text-title">Solicitud de recuperar contraseña</h1>
+
+    <div class="card">
+        <div class="card-body">
+         <h3 class="title-info">Ingresa a este link para recuperar tu contraseña</h3>
+         <a class="link" href="<%= link %>"> <%= link %> </a>
+
+         <h4 class="text-info" >recuerda que tienes 10 min para recuperar tu contraseña, sino debes solicitar un nuevo link</h4>
+      </div>
+</body>
+
+<style>
+  body > h1 {
+    text-align: center;
+    font-size: 32px;
+    color: white;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 12px;
+  }
+  .title-info {
+    text-align: center;
+    font-size: 20px;
+    color: black;
+  }
+
+  .link {
+    text-align: center;
+    border-bottom-color: #6b18ac;
+    border-bottom-width: 1px;
+    text-decoration: none;
+  }
+
+  .text-info {
+    text-align: center;
+    font-size: 16px;
+    color: black;
+  }
+</style>
+</html>

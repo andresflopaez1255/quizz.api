@@ -13,8 +13,8 @@ router.post(routesNames.createUserWithEmailAndPassword,authController.signUpWith
 router.post(routesNames.signInWithEmail,authController.signInWithEmail)
 router.put(routesNames.updateRefreshToken,authController.updateRefreshToken)
 router.post(routesNames.requestRecoveryPassword,authController.requestResetPassword)
-router.put(routesNames.setNewPassword,authController.setNewPassword)
+router.post(routesNames.setNewPassword,authController.setNewPassword)
 router.get(routesNames.recoveryPassword,(req,res)=>{
-    res.sendFile(path.join(`${__dirname}/src/pages/recovery.html`))
+    res.render("recovery", { titulo: "Nosotros EJS" });
 })
 export default router

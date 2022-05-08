@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.2.1/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar contraseña / Quizz app</title>
+  </head>
+  <body style="background-color: #6b18ac" class="h-full w-full">
+    <h1 class=" text-center pt-6 text-8xl text-white">Quizz App</h1>
+    <h4 class="text-black text-center pt-2 text-lg text-white">
+      Recupera tu contraseña
+    </h4>
+    <main class="grid grid-rows-2 mt-20 place-content-center">
+      <div class="form-control w-full place-content-center">
+        <label class="label">
+          <span class="label-text text-white">Nueva contraseña</span>
+        </label>
+        <input
+          id="newPassword"
+          type="password"
+          class="input input-bordered text-black bg-white"
+        />
+      </div>
+
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text text-white">Confirma nueva contraseña</span>
+        </label>
+        <input
+          id="confirmNewPassword"
+          type="password"
+          class="input input-bordered text-black bg-white w-full max-w-xs"
+        />
+      </div>
+
+      <button id="btnReset" class="btn w-72 mt-7">Recuperar</button>
+    </main>
+    <script>
+      const newPasswordInput = document.querySelector("#newPassword");
+      const confirmNewPasswordInput = document.querySelector(
+        "#confirmNewPassword"
+      );
+
+      const button = document.querySelector("#btnReset")
+
+      button.addEventListener("click",()=>{
+        console.log("click")
+          setNewPassword().then(()=>{})
+      })
+     
+
+      const setNewPassword = async () => {
+        const newPassword = newPasswordInput.value;
+      const confirmNewPassword = confirmNewPasswordInput.value;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const token = urlParams.get("token")
+        console.log(newPassword)
+        const noInputEmpty =
+          newPassword.length > 0 && confirmNewPassword.length > 0;
+        if (noInputEmpty) {
+          console.log("oki")
+          if (newPassword !== confirmNewPassword) {
+            console.log("Passwords do not match")
+            return res.status(400).send({
+              status: "error",
+              message: "Passwords do not match",
+            });
+          }
+
+          console.log("okiii")
+          fetch(`http://localhost:3001/set_new_password`, {
+            method: "post",
+            body: JSON.stringify({
+              token,
+              password: newPassword,
+            }),
+            headers: {
+              accept: "application/json",
+              
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result)
+              if (result.status === "success") {
+                alert("Password successfully changed");
+              }
+            }).catch((error)=> console.log(error));
+        }
+      };
+    </script>
+  </body>
+</html>

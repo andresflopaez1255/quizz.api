@@ -6,7 +6,7 @@ const get_questions = async (req, res) => {
    const { category, difficulty, language } = req.body;
    
    const url = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
-   console.log(url)
+   
     try {
     const response = await axios.get(url);
     const translateJson = await TJO.translate(response.data.results, language);
@@ -16,9 +16,10 @@ const get_questions = async (req, res) => {
         
     });
     } catch (error) {
-        res.send({
+        console.log(error)
+        res.status(400).send({
             status: 'error',
-            message: error.message
+            message: error
         })
     }
 

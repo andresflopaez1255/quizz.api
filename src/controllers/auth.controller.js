@@ -2,6 +2,7 @@ import prisma from "../utils/prismaDB.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import jwtHelper from "../utils/jwtHelper.js";
+import { sendEmailPassword } from "../utils/sendEmail.helper.js";
 const saltRounds = 10;
 const signUpWithEmail = async (req, res) => {
   const { name_user, email_user, password, avatar_user } = req.body;
@@ -42,7 +43,7 @@ const signUpWithEmail = async (req, res) => {
       email_user: user.email_user,
       name_user: user.name_user,
       avatar_user: user.avatar_user,
-      token_google: user.token_google,
+      access_token: user.access_token,
     },
   });
 };
@@ -225,11 +226,11 @@ const requestResetPassword = async (req, res) => {
   });
 
   var fullUrl = `${req.protocol}://${req.get("host")}/recovery_password`;
-  res.send({
-    status: "success",
-    message: "Reset password request successfully",
-    data: fullUrl + "?token=" + token,
-  });
+  await sendEmailPassword(email_user, fullUrl + "?token=" + token)
+  res.status(200).send({
+    status:"success",
+    data:null
+  })
 };
 
 const setNewPassword = async (req, res) => {
@@ -246,8 +247,8 @@ const setNewPassword = async (req, res) => {
       message: "User not found",
     });
   }
-
-  const newPassword = bcrypt.hashSync(password, 10);
+console.log(password)
+  const newPassword = bcrypt.hashSync(password, saltRounds);
 
   await prisma.user.update({
     where: {

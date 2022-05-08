@@ -14,7 +14,7 @@ const validateToken = (token) => {
 
 const createResetPasswordToken = (data, expiresIn) => {
   
-  const token = jtw.sign(data, process.env.SECRET_KEY, {
+  const token = jtw.sign(data, process.env.RESET_TOKEN_KEY, {
     expiresIn: 600,
   });
   return token;

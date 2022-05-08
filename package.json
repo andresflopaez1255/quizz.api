@@ -1,39 +1,41 @@
 {
-  "name": "quizapi",
-  "version": "1.0.0",
-  "description": "quizapi",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx babel src --out-dir dist",
-    "dev": " nodemon src/index.js",
-    "start": "node src/index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@prisma/client": "^3.9.2",
-    "axios": "^0.25.0",
-    "babel-preset-stage-0": "^6.24.1",
-    "bcrypt": "^5.0.1",
-    "cookie-session": "^2.0.0",
-    "cors": "^2.8.5",
-    "daisyui": "^2.2.1",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.2",
-    "firebase-admin": "^10.0.2",
-    "jsonwebtoken": "^8.5.1",
-    "passport": "^0.5.2",
-    "translate-json-object": "^2.3.7"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.17.0",
-    "@babel/core": "^7.17.2",
-    "@babel/preset-env": "^7.16.11",
-    "@types/cors": "^2.8.12",
-    "babel-preset-env": "^1.7.0",
-    "nodemon": "^2.0.15",
-    "prisma": "^3.9.2"
-  }
+    "name": "quizapi",
+    "version": "1.0.0",
+    "description": "quizapi",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx babel src --out-dir dist",
+        "dev": " nodemon src/index.js",
+        "start": "node src/index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^3.9.2",
+        "axios": "^0.25.0",
+        "babel-preset-stage-0": "^6.24.1",
+        "bcrypt": "^5.0.1",
+        "cookie-session": "^2.0.0",
+        "cors": "^2.8.5",
+        "daisyui": "^2.2.1",
+        "dotenv": "^16.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.2",
+        "firebase-admin": "^10.0.2",
+        "jsonwebtoken": "^8.5.1",
+        "nodemailer": "^6.7.2",
+        "passport": "^0.5.2",
+        "translate-json-object": "^2.3.7"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.17.0",
+        "@babel/core": "^7.17.2",
+        "@babel/preset-env": "^7.16.11",
+        "@types/cors": "^2.8.12",
+        "babel-preset-env": "^1.7.0",
+        "nodemon": "^2.0.15",
+        "prisma": "^3.9.2"
+    }
 }
